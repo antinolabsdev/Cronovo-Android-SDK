@@ -32,7 +32,8 @@ Add it in your root build.gradle at the end of repositories:
     targetCompatibility JavaVersion.VERSION_1_8
     }
     }
-## Step 4. Write these line in our code
+## Step 4. You just need to create an instance of Cronovo and call the method according to your need.
+	new Cronovo().method()
 
 ### Database:
 - We have used SQLite Database to store data.
@@ -49,7 +50,7 @@ vo2, calorie] and time and date will be calculated in the Framework only.
 ```
 getUserDetails()
 ```
-- This will return an array for Integers in order [Age,Height,Weight]
+- This will return an arraylist<userlist>model in which we define for Integers in order [Age,Height,Weight]
 ### Delete Database:
 - This method can be used to delete the database in any case:
 ```
