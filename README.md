@@ -28,8 +28,6 @@ Add it in your root build.gradle at the end of repositories:
 	
 ## Step 4. Create an Instance of Cronovo Class call there method. according to need
 	
-  ### Data Insertion:
-- There is a public function to allow the user to insert data from the watch into the database
 ### Data Insertion:
 - There is a public function to allow the user to insert data from the watch into the database
 ```
