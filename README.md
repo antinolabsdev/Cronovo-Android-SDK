@@ -30,7 +30,6 @@ Add it in your root build.gradle at the end of repositories:
 	
   ### Data Insertion:
 - There is a public function to allow the user to insert data from the watch into the database
-```
 ### Data Insertion:
 - There is a public function to allow the user to insert data from the watch into the database
 ```
