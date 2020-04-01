@@ -17,7 +17,7 @@ public class Cronovo {
         return LibraryMethods.calculateHeartRateRecovery(recoveryTime, dataBase);
     }
 
-    public double getRestingHr(Context context) {
+    public double getRestingHeartRate(Context context) {
         DataBase dataBase = DataBase.getInstance(context);
         return LibraryMethods.calculateRestingHr(dataBase);
     }
@@ -72,6 +72,11 @@ public class Cronovo {
         }
     }
 
+    public void deleteUserData(Context context){
+        DataBase dataBase = DataBase.getInstance(context);
+        dataBase.deleteUserTable();
+    }
+
     public void saveUser(int age, int height, int weight, Context context) {
         SharedPref.init(context);
         SharedPref.write("age", age);
@@ -122,6 +127,7 @@ public class Cronovo {
     public enum HeartZone {
         Zone1(50), Zone2(60), Zone3(70), Zone4(80), Zone(90);
         private  final long i;
+        //Update Code in master
 
 
         HeartZone(long i) { this.i = i;}
