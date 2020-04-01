@@ -12,23 +12,26 @@ If you are setting up a new project, you need to install the SDK.
 ## Setup SuperBot SDK
 ## Step 1. Add the JitPack repository to your build file
 Add it in your root build.gradle at the end of repositories:
-allprojects {
-repositories {
-...
-maven { url 'https://jitpack.io' }
-}
-}
+    
+    allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
 ## Step 2. Add the dependency
-dependencies {
-implementation 'com.github.antinolabsdev:Cronovo-Android-SDK:1.0'
-}
+
+    dependencies {
+    implementation 'com.github.antinolabsdev:Cronovo-Android-SDK:1.0'
+    }
 ## Step 3. Write compileOptions in
-android{
-compileOptions {
-sourceCompatibility JavaVersion.VERSION_1_8
-targetCompatibility JavaVersion.VERSION_1_8
-}
-}
+
+    android{
+    compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+    }
+    }
 ## Step 4. Write these line in our code
 
 ### Database:
