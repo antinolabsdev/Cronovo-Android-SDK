@@ -9,7 +9,7 @@
 (SuperBot Works also with pure Java projects)
 ## Usage:
 If you are setting up a new project, you need to install the SDK.
-## Setup SuperBot SDK
+## Setup Cronovo Dependency
 ## Step 1. Add the JitPack repository to your build file
 Add it in your root build.gradle at the end of repositories:
     
@@ -43,9 +43,13 @@ calories, entrytime, date).
 - The data to be inserted should be in the form of an array of integers.
 - Format of data should be like this [position, signal, hrm, timesec, timems, cadence, steps,
 vo2, calorie] and time and date will be calculated in the Framework only.
+
 ### Data Insertion:
 - There is a public function to allow the user to insert data from the watch into the database
-- Here data must be in an array of integers [position, signal, hrm, timesec, timems, cadence, steps, vo2, calorie]
+- Here data must be contain these feature.
+```
+saveUserDetails()
+```
 ### Read User Data from Database:
 ```
 getUserDetails()
@@ -54,7 +58,7 @@ getUserDetails()
 ### Delete Database:
 - This method can be used to delete the database in any case:
 ```
-deleteData()
+deleteUserData()
 ```
 ### Methods to calculate app functionalities:
 - There are some public methods to calculate the result for the algorithms
@@ -66,25 +70,25 @@ deleteData()
 3. Monthly
 4. All Time
 ```
-cardiacEfficiency(forTime: Duration)
+getCardiacEfficiency(Cronovo.TimePeriod.DAILY/Weekly,Context)
 ```
 - The input will be the duration for the cardiac efficiency (.Daily, .Weekly, .Monthly, .All Time).
 - The output will be in a string format.
 ### Resting Heart Rate
 - This will return the average heart rate of 1minute.
 ```
-getRestingHeartRate()
+getRestingHeartRate(Context)
 ```
-- The output will be in a string format.
+- The output will be in a double format.
 ### Heart Rate Recovery
 - This method can be used to calculate the recovery rate of a person over a given period.
 - This method can be used to calculate the results over a period of 30sec, 60secs or
 120secs.
 ```
-heartRateRecovery(forTime: RecoveryTime)
+getHeartRateRecovery(Cronovo.RecoveryTime.SIXTYSEC/THIRTYSEC,this/ctx)
 ```
-- The input will be the recovery time (.ThirtySec, .SixtySec, .OneTwentySec).
-- The output will be in a string format.
+- The input will be the recovery time (.SIXTYSEC, .THIRTYSEC, .ONETWENTYSEC).
+- The output will be in a double format.
 ### Heart Rate Zone
 - This method can be used to get the range of heartbeats for the different zones.
 - There are five heart rate zones.
@@ -95,7 +99,7 @@ heartRateRecovery(forTime: RecoveryTime)
 5. Zone5(>90% of HRR)
 - The Range of heartbeats will vary according to the age of the user.
 ```
-heartRateZone (zone: HeartZone, Age: Int)
+heartRateZone(Context context, Integer Age, Cronovo.HeartZone.Zone1)
 ```
 - The input will be the zone (.Zone1, .Zone2, .Zone3, .Zone4, .Zone5) and age of the user.
 - The output will be in a string format (e.g. 120-135 bpm).
@@ -103,33 +107,33 @@ heartRateZone (zone: HeartZone, Age: Int)
 - This method can be used to calculate the cardiovascular fitness of the user (VO2 Max).
 - This method will calculate the VO2 Max for the present date.
 ```
-getVO2Max()
+getVO2Max(context)
 ```
-- The output will be in a string format.
+- The output will be in a double format.
 ### Heart Rate Variability
 - This method can be used to calculate the heart rate variability of the user (HRV).
 - This method will calculate the HRV for the present date.
 ```
 getHRV()
 ```
-- The output will be in a string format.
+- The output will be in a double format.
 ### RRi
 - This method can be used to calculate the RR interval of the user.
 ```
-getRRi()
+getRRi(context)
 ```
-- The output will be in a string format.
+- The output will be in a double format.
 ### Core Temperature
 - This method is used to calculate the Core temperature of the user while performing an exercise.
 ```
-coreTemperature(scale: Scale)
+getCoreTemperature(Context context)
 ```
 - The input will be the scale in which output is required (Celsius or Fahrenheit)
-- The output will be in a string format.
+- The output will be in a double format.
 ### Weekly Training Effect
 - This method is used to calculate the credits according to the exercise performed by the user in different zones (Moderate or Intense).
 ```
-trainingEffect(Age: Int, StartTime: Int64, StopTime: Int64)
+trainingEffect(Context context, Integer Age, Long StartTime, Long StopTime)
 ```
 - The input will be the Age of the user, Exercise Start and Stop time.
 - The output will be in a Dictionary format.
